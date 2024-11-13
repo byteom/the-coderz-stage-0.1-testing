@@ -1,7 +1,7 @@
-export const runtime = 'edge';
+ 
 
 "use client"
-
+export const runtime = 'edge';
 import { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import { Input } from "@/components/ui/input";

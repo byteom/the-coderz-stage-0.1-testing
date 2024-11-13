@@ -1,6 +1,6 @@
-export const runtime = 'edge';
-
 "use client"
+
+export const runtime = 'edge';
 
 import { useParams, useSearchParams } from "next/navigation";
 import { lessonData } from "@/app/resources/data/c";
