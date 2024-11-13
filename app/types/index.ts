@@ -1,4 +1,5 @@
 // Types for the Request Body for the SignUp:
+"use client";
 export interface RequestBody {
     name: string;
     email: string;

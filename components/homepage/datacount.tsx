@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { Users, School, Code, BookOpen, LucideIcon } from 'lucide-react';
 import { Card } from '@/components/ui/card';
