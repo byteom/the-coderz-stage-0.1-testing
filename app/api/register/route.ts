@@ -2,7 +2,7 @@ export const runtime = 'edge';
 
 import { prisma } from "@/app/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
-import bcrypt from "bcrypt";
+import bcrypt from 'bcryptjs';
 import { RequestBody } from "@/app/types";
 import { sendEmail } from "@/app/utils/mail";
 

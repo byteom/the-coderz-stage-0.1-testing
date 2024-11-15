@@ -2,7 +2,8 @@ import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from "next-auth/providers/google";
 import { prisma } from "./app/lib/prisma";
-import bcrypt from "bcrypt";
+import bcrypt from 'bcryptjs';
+
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { NextAuthOptions } from "next-auth";
 import { Adapter } from "next-auth/adapters";
