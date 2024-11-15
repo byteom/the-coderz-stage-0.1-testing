@@ -1,4 +1,5 @@
-export const runtime = 'nodejs';
+export const runtime = 'edge';
+
 import { prisma } from "@/app/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from 'bcryptjs';

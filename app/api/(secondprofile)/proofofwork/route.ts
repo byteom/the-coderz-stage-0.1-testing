@@ -1,4 +1,5 @@
-export const runtime = 'nodejs';
+export const runtime = 'edge';
+
 
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
