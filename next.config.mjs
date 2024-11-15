@@ -1,16 +1,31 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['images.unsplash.com', "avatar.vercel.sh", "aceternity.com", 'avatars.githubusercontent.com', 'picsum.photos', 'lh3.googleusercontent.com', 'tse4.mm.bing.net', 'source.unsplash.com' , 'assets.aceternity.com'],
+        remotePatterns: [
+            { protocol: 'https', hostname: 'images.unsplash.com' },
+            { protocol: 'https', hostname: 'avatar.vercel.sh' },
+            { protocol: 'https', hostname: 'aceternity.com' },
+            { protocol: 'https', hostname: 'avatars.githubusercontent.com' },
+            { protocol: 'https', hostname: 'picsum.photos' },
+            { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
+            { protocol: 'https', hostname: 'tse4.mm.bing.net' },
+            { protocol: 'https', hostname: 'source.unsplash.com' },
+            { protocol: 'https', hostname: 'assets.aceternity.com' },
+        ],
     },
     webpack: (config, { isServer }) => {
         config.module.rules.push({
             test: /\.md$/,
-            use: 'raw-loader'
+            use: 'raw-loader',
         });
 
+        config.resolve.fallback = {
+            ...config.resolve.fallback,
+            fs: false,
+        };
+
         return config;
-    }
+    },
 };
 
 export default nextConfig;
