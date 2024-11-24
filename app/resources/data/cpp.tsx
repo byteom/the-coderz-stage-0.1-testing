@@ -3389,47 +3389,7 @@ int main() {
             }
         ]
     },
-    'stl_containers': {
-        title: "Using STL Containers - Vector and List",
-        description: "Dive deeper into the STL by learning how to use vector and list containers for efficient data management.",
-        sections: [
-            {
-                title: "Working with Vectors",
-                content: "Vectors are dynamic arrays that can resize automatically. They provide random access to elements and efficient insertion and deletion at the end.",
-                code: `std::vector<int> vec = {1, 2, 3};
-    vec.push_back(4);  // Add element at the end`
-            },
-            {
-                title: "Working with Lists",
-                content: "Lists are doubly linked lists that allow efficient insertion and deletion of elements at any position. They do not provide direct access like vectors.",
-                code: `std::list<int> lst = {1, 2, 3};
-    lst.push_front(0);  // Add element at the front`
-            },
-            {
-                title: "Choosing Between Vector and List",
-                content: "Use vectors when you need random access and performance for large amounts of data, and lists when you frequently add or remove elements.",
-                code: `if (useVector) {
-        // use vector operations
-    } else {
-        // use list operations
-    }`
-            }
-        ],
-        practiceQuestions: [
-            {
-                question: "Create a program that demonstrates adding and removing elements from a vector.",
-                hint: "Use push_back() and pop_back() methods."
-            },
-            {
-                question: "Implement a program that shows the differences in performance between vector and list when inserting elements.",
-                hint: "Measure time taken for various operations."
-            },
-            {
-                question: "Write a program that initializes a list with values and removes duplicates.",
-                hint: "Use unique() in combination with list::erase()."
-            }
-        ]
-    },
+     
     'stl_containers': {
     title: "Using STL Containers - Vector, List, and Other Containers",
     description: "Dive deep into the Standard Template Library (STL) by exploring vector, list, and other commonly used containers like deque, set, and map. Learn their features, use cases, and key operations for efficient data management.",
