@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -10,15 +10,15 @@ import { lessonData, units } from '../../data/devopswithdocker';
 const pageDescription = {
     title: "HTML/CSS Learning Path",
     description: "Master HTML/CSS with our comprehensive course covering everything from basics to advanced topics Perfect for beginners and experienced programmers looking to enhance their skills."
-}
+};
 
-const devopswithdockerResources = () => {
+const DevopsWithDockerResources = () => {
     const router = useRouter();
     const [isEnrolled, setIsEnrolled] = useState(false);
 
     const handleEnroll = async () => {
         setIsEnrolled(c => !c);
-    }
+    };
 
     return (
         <div className="min-h-screen overflow-hidden w-full py-32 flex flex-col items-center justify-center p-8">
@@ -29,10 +29,10 @@ const devopswithdockerResources = () => {
                         <UnitAccordion key={index} unit={unit} unitIndex={index} lessonData={lessonData} />
                     ))
                 }
-                <QuizAndContribute contributelink='#' />
+                <QuizAndContribute contributelink="#" />
             </div>
         </div>
     );
 };
 
-export default devopswithdockerResources;
+export default DevopsWithDockerResources;
