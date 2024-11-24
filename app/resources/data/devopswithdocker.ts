@@ -45,6 +45,136 @@ export const units = [{
 ];
 
 export const lessonData = {
+    'install_docker': {
+    title: "Installing Docker",
+    description: "Learn how to install Docker on your system, including the Docker Engine, Docker Compose, and Docker Desktop for Ubuntu, macOS, and Windows.",
+    sections: [
+        {
+            "title": "What is Docker?",
+            "content": "Docker is a platform that enables developers to build, ship, and run applications in containers. Containers are lightweight, portable, and isolated environments that package an application and its dependencies. Docker simplifies the process of creating, deploying, and managing applications by providing a consistent environment across different systems.",
+            "code": null,
+            "images": []
+        },
+        {
+            "title": "Installing Docker on Ubuntu",
+            "content": "Follow these steps to install Docker on Ubuntu:",
+            "code": `# Step 1: Update the apt package index
+sudo apt-get update
+
+# Step 2: Install prerequisites
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+
+# Step 3: Add Docker’s official GPG key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+# Step 4: Set up the stable repository
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Step 5: Install Docker Engine
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+# Step 6: Verify the installation
+docker --version`,
+            "images": []
+        },
+        {
+            "title": "Installing Docker on macOS",
+            "content": "Follow these steps to install Docker on macOS:",
+            "code": `# Step 1: Download Docker Desktop
+# Visit https://www.docker.com/products/docker-desktop/ and download the macOS installer.
+
+# Step 2: Install Docker Desktop
+# - Open the downloaded .dmg file.
+# - Drag the Docker icon to the Applications folder.
+
+# Step 3: Start Docker Desktop
+# - Open Docker from the Applications folder.
+# - Follow the setup prompts to complete the installation.
+
+# Step 4: Verify the installation
+docker --version`,
+            "images": []
+        },
+        {
+            "title": "Installing Docker on Windows",
+            "content": "Follow these steps to install Docker on Windows:",
+            "code": `# Step 1: Download Docker Desktop
+# Visit https://www.docker.com/products/docker-desktop/ and download the Windows installer.
+
+# Step 2: Install Docker Desktop
+# - Run the downloaded installer.
+# - Follow the setup wizard and ensure that WSL 2 is installed and enabled (required for Windows Home).
+
+# Step 3: Start Docker Desktop
+# - Open Docker Desktop after installation.
+# - Follow the setup wizard to complete the installation.
+
+# Step 4: Verify the installation
+docker --version`,
+            "images": []
+        },
+        {
+            "title": "Verifying the Installation",
+            "content": "After installing Docker, verify that it's working correctly by running a simple command like `docker --version`. This command displays the installed Docker version, confirming that the installation was successful.",
+            "code": `# Verify the Docker installation
+docker --version
+# Example output:
+# Docker version 20.10.7, build f0df350`,
+            "images": []
+        },
+        {
+            "title": "Getting Started with Docker",
+            "content": "Once Docker is installed, you can start running containers using the `docker run` command. This command pulls an image from the Docker Hub registry and creates a container from it. For example, running `docker run hello-world` fetches the `hello-world` image and starts a container that prints a welcome message.",
+            "code": `# Run the hello-world container
+docker run hello-world
+# Example output:
+# Hello from Docker!
+# This message shows that your installation appears to be working correctly.`,
+            "images": []
+        }
+    ],
+    practiceQuestions: [
+        {
+            question: "What is the purpose of Docker?",
+            hint: "Docker enables developers to build, ship, and run applications in containers. Containers are lightweight, portable, and isolated environments that package an application and its dependencies.",
+            solution: "Docker simplifies the process of creating, deploying, and managing applications by providing a consistent environment across different systems."
+        },
+        {
+            question: "How can you verify that Docker is installed correctly?",
+            hint: "Use the `docker --version` command to display the installed Docker version.",
+            solution: "Running `docker --version` should display the installed Docker version, confirming that the installation was successful."
+        },
+        {
+            question: "What are the steps to install Docker on Ubuntu?",
+            hint: "Start by updating your system, adding Docker's GPG key, and installing Docker Engine.",
+            solution: `# Step 1: Update the apt package index
+sudo apt-get update
+
+# Step 2: Install prerequisites
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+
+# Step 3: Add Docker’s official GPG key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+# Step 4: Set up the stable repository
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Step 5: Install Docker Engine
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+# Step 6: Verify the installation
+docker --version`
+        },
+        {
+            question: "How can you start the Docker Desktop application on macOS or Windows?",
+            hint: "Look for the Docker Desktop application in your Applications folder or Start Menu.",
+            solution: "Open the Docker Desktop application, follow the setup prompts, and ensure Docker is running by verifying it with `docker --version`."
+        }
+    ]
+},
+
     'basic_concepts': {
         title: "Understanding Definitions and Core Concepts",
         description: "Learn the foundational concepts of DevOps and Docker, including the definition of DevOps, the purpose of Docker, and the benefits of containerization in software development.",
