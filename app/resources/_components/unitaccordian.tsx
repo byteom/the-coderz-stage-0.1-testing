@@ -30,6 +30,7 @@ interface UnitLessonProps {
     name: string;
     lessonkey: string;
 }
+
 interface UnitAccordianSecondProps {
     title: string;
     youtube: string;
@@ -43,13 +44,30 @@ interface UnitAccordionProps {
     lessonData: { [key: string]: any };
 }
 
+const formatText = (text: string) => {
+    // Handle bold text
+    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    // Handle underline & italic text
+    text = text.replace(/`(.*?)`/g, '<span class="underline italic">$1</span>');
+    
+    // Handle numbered headers
+    text = text.replace(/##\s*(.*?)""$/gm, (_, content) => {
+        const lines = content.split('\n');
+        return lines
+            .map((line, index) => `${index + 1}. ${line.trim()}`)
+            .join('\n');
+    });
+    
+    return <span dangerouslySetInnerHTML={{ __html: text }} />;
+};
+
 const UnitAccordion: React.FC<UnitAccordionProps> = ({ unit, unitIndex, lessonData }) => {
     const [expanded, setExpanded] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
     const { toast } = useToast();
 
-    // Effect to handle scroll lock
     useEffect(() => {
         if (isModalOpen) {
             document.body.classList.add("overflow-hidden");
@@ -57,7 +75,6 @@ const UnitAccordion: React.FC<UnitAccordionProps> = ({ unit, unitIndex, lessonDa
             document.body.classList.remove("overflow-hidden");
         }
 
-        // Cleanup when the component unmounts or modal closes
         return () => {
             document.body.classList.remove("overflow-hidden");
         };
@@ -69,6 +86,7 @@ const UnitAccordion: React.FC<UnitAccordionProps> = ({ unit, unitIndex, lessonDa
         setSelectedLesson({ ...lesson, ...detailedLessonData });
         setIsModalOpen(true);
     };
+
     const handleQuizSelection = () => {
         toast({
             title: "Success",
@@ -92,13 +110,11 @@ const UnitAccordion: React.FC<UnitAccordionProps> = ({ unit, unitIndex, lessonDa
                         onClick={() => setExpanded(!expanded)}
                     >
                         <CardTitle className="text-md sm:text-xl font-semibold text-white dark:text-black">
-                            {unit.title}
+                            {formatText(unit.title)}
                         </CardTitle>
                     </div>
                     <div className="flex w-full justify-between sm:justify-end sm:gap-6">
                         <button
-                            // href={unit.quizlink}
-                            // target="_blank"
                             className="shadow-[0_0_0_3px_#000000_inset] flex items-center justify-center w-full sm:w-auto p-2 bg-transparent border border-white dark:border-white text-white dark:text-black rounded-lg font-semibold transform hover:-translate-y-1 transition duration-400"
                             onClick={handleQuizSelection}
                         >
@@ -136,20 +152,20 @@ const UnitAccordion: React.FC<UnitAccordionProps> = ({ unit, unitIndex, lessonDa
                         >
                             <CardContent>
                                 <div className="grid gap-4 mt-4">
-                                    {
-                                        unit.lessons.map((lesson, lessonIndex) => (
-                                            <Card key={lessonIndex} className="bg-gray-700 w-[96%] mx-auto">
-                                                <CardContent className="p-4 flex justify-between items-center">
-                                                    <button
-                                                        onClick={() => handleLessonClick(lesson)}
-                                                        className="text-white hover:text-blue-300 text-left"
-                                                    >
-                                                        <span className="font-medium underline">{lesson.name}</span>
-                                                    </button>
-                                                </CardContent>
-                                            </Card>
-                                        ))
-                                    }
+                                    {unit.lessons.map((lesson, lessonIndex) => (
+                                        <Card key={lessonIndex} className="bg-gray-700 w-[96%] mx-auto">
+                                            <CardContent className="p-4 flex justify-between items-center">
+                                                <button
+                                                    onClick={() => handleLessonClick(lesson)}
+                                                    className="text-white hover:text-blue-300 text-left"
+                                                >
+                                                    <span className="font-medium underline">
+                                                        {formatText(lesson.name)}
+                                                    </span>
+                                                </button>
+                                            </CardContent>
+                                        </Card>
+                                    ))}
                                 </div>
                             </CardContent>
                         </motion.div>

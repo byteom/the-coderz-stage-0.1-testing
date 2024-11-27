@@ -47,11 +47,11 @@ export const units = [{
 export const lessonData = {
     'install_docker': {
     title: "Installing Docker",
-    description: "Learn how to install Docker on your system, including the Docker Engine, Docker Compose, and Docker Desktop for Ubuntu, macOS, and Windows.",
+    description: "Learn how to *install* Docker on your system, including the Docker Engine, Docker Compose, and Docker Desktop for Ubuntu, macOS, and Windows.",
     sections: [
         {
             "title": "What is Docker?",
-            "content": "Docker is a platform that enables developers to build, ship, and run applications in containers. Containers are lightweight, portable, and isolated environments that package an application and its dependencies. Docker simplifies the process of creating, deploying, and managing applications by providing a consistent environment across different systems.",
+            "content": "Docker is a **platform** that enables developers to build, ship, and run applications in containers. Containers are lightweight, portable, and isolated environments that package an application and its dependencies. Docker simplifies the process of creating, deploying, and managing applications by providing a consistent environment across different systems.",
             "code": null,
             "images": []
         },
